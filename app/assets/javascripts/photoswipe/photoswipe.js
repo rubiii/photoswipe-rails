@@ -792,6 +792,12 @@ var publicMethods = {
 	isZooming: function() {
 		return _isZooming;
 	},
+  enableDragging: function() {
+    _options.disableDragging = false;
+  },
+  disableDragging: function() {
+    _options.disableDragging = true;
+  },
 	setScrollOffset: function(x,y) {
 		_offset.x = x;
 		_currentWindowScrollY = _offset.y = y;
@@ -1643,6 +1649,9 @@ var _gestureStartTime,
 
 	// Pointerdown/touchstart/mousedown handler
 	_onDragStart = function(e) {
+    if (_options.disableDragging) {
+      return;
+    }
 
 		// Allow dragging only via left mouse button.
 		// As this handler is not added in IE8 - we ignore e.which

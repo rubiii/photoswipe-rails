@@ -1327,6 +1327,10 @@ var publicMethods = {
 				updateFn(now);
 			}
 
+      if (now === 1) {
+        _shout('zoomToFinished');
+      }
+
 			_applyCurrentZoomPan( now === 1 );
 		};
 
